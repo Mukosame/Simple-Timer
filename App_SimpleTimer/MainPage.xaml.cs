@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
 namespace App_SimpleTimer
@@ -126,6 +127,11 @@ namespace App_SimpleTimer
             textblock1.Text = temp;
             //textblock2.Text = "." + rest1 + rest2;
  
+        }
+        public void rankclick()
+        {
+            //await Windows.System.Launcher.LaunchUriAsync(new Uri(@"zune:reviewapp?appid=app" + YourAppID));
+            //new Uri("ms-windows-store:reviewapp?appid=" + CurrentApp.AppId);
         }
     
     }
