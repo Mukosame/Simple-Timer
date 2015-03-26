@@ -22,16 +22,23 @@ namespace App_SimpleTimer
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        int minute = 0;
-        int second = 0;
-        int rest = 0;
-        int minute1, minute2, second1, second2;
-        int rest1, rest2, rest3;
-        bool flag = false; //default: not running 
+        DispatcherTimer dispatcherTimer = new DispatcherTimer();
+
+       // int minute = 0;
+        //int second = 0;
+        //int rest = 0;
+        int minute1=0, minute2=0, second1=0, second2=0;
+       // int rest1 = 0, rest2 = 0;
+        //bool flag = false; //default: not running 
 
         public MainPage()
         {
             this.InitializeComponent();
+            //dispatcherTimer.Stop();
+
+            dispatcherTimer.Tick += new EventHandler<object>(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 1);
+            //set time interval to 1s
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
         }
@@ -54,56 +61,71 @@ namespace App_SimpleTimer
         //start
         private void bksclick(object sender, RoutedEventArgs e)
         {
-            flag = true; //start running
-            ChangeTime();
+            dispatcherTimer.Start();
         }
 
         //stop
         private void btzclick(object sender, RoutedEventArgs e)
         {
-            flag = false;//not running
+            //flag = false;//not running
+            dispatcherTimer.Stop();
             ShowTime();
         }
 
         //back to zero
         private void bqlclick(object sender, RoutedEventArgs e)
         {
-            flag = false;
-            minute = 0;
-            second = 0;
-            rest = 0;
-            TimeSplit();
+            //flag = false;
+            dispatcherTimer.Stop();
+            minute1 = 0; minute2 = 0;
+            second1 = 0; second2 = 0;
+      //      rest1 = 0; rest2 = 0; 
+
             textblock1.Text = "00:00";
-            textblock2.Text = ".000";
+            //textblock2.Text = ".00";
         }
 
-        //change time
-        private void ChangeTime()
+        private void dispatcherTimer_Tick(object sender, object e)
         {
-            while(flag)
+           /* rest2++;
+            if (rest2>9)
             {
-                //sleep Task.Delay(1);
-                TimeSplit();
-                ShowTime();
+                rest1++;
+                rest2 = 0;
+            }
+            if (rest1>9)
+            {
+            */
+                second2++;
+                //rest1 = 0;
+            //}
+             
+            if (second2>9)
+            {
+                second1++;
+                second2 = 0;
+            }
+            if (second1>5)
+            {
+                minute2++;
+                second1 = 0;
+            }
+            if (minute2>9)
+            {
+                minute1++;
+                minute2 = 0;
             }
 
-        }
-
-        private void TimeSplit()
-        {
-            minute1 = minute / 10;
-            minute2 = minute % 10;
-            second1 = second / 10;
-            second2 = second % 10;
-            rest1 = rest / 100;
-            rest2 = (rest - rest1 * 100) / 10;
-            rest3 = (rest - rest1 * 100 - rest2 * 10);
+            ShowTime();
         }
 
         private void ShowTime()
         {
-            textblock1.Text = minute1 + minute2 + ":" + second1 + second2;
-            textblock2.Text = "." + rest1 + rest2 + rest3;
+            string temp = Convert.ToString(minute1);
+            temp = temp + minute2 + ":" + second1 + second2;
+            textblock1.Text = temp;
+            //textblock2.Text = "." + rest1 + rest2;
+ 
         }
     
     }
