@@ -59,6 +59,8 @@ namespace App_SimpleTimer
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
         }
+
+
         //start
         private void bksclick(object sender, RoutedEventArgs e)
         {
@@ -80,7 +82,7 @@ namespace App_SimpleTimer
             dispatcherTimer.Stop();
             minute1 = 0; minute2 = 0;
             second1 = 0; second2 = 0;
-      //      rest1 = 0; rest2 = 0; 
+      //    rest1 = 0; rest2 = 0; 
 
             textblock1.Text = "00:00";
             //textblock2.Text = ".00";
