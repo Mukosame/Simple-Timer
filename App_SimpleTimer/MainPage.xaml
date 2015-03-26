@@ -1,0 +1,20 @@
+﻿<Page
+    x:Class="App_SimpleTimer.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App_SimpleTimer"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Button Content="开始" HorizontalAlignment="Left"  VerticalAlignment="Center" Height="28" Width="85" Name="bks" Click="bksclick" Margin="20,392,0,190"/>
+        <Button Content="清零" HorizontalAlignment="Right"  VerticalAlignment="Center" Height="28" Width="85" Name="bql" Click="bqlclick" Margin="0,392,20,190"/>
+        <Button Content="停止" HorizontalAlignment="Center" VerticalAlignment="Center" Height="28" Width="85" Name="btz" Click="btzclick" Margin="145,392,146,190"/>
+        <TextBlock HorizontalAlignment="Left" Margin="65,106,0,0" TextWrapping="Wrap" Text="00:00" VerticalAlignment="Top" Height="125" Width="270" Name="textblock1" FontSize="110"/>
+        <TextBlock HorizontalAlignment="Left" Margin="242,231,0,0" TextWrapping="Wrap" Text=".000" VerticalAlignment="Top" Height="40" Width="93" Name="textblock2" FontSize="40"/>
+
+
+    </Grid>
+</Page>
